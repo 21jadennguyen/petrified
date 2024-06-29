@@ -28,12 +28,6 @@ func _physics_process(delta):
 	if is_on_floor():
 		dashused = false
 	
-	# dash
-	if Input.is_action_just_pressed("dash") and !dashused:
-		dashused = true
-		dash.start_dash(dashlength)
-	var speed = dashspeed if dash.is_dashing() else speed
-	
 	# jump
 	if Input.is_action_just_pressed("jump"):
 		if is_on_floor():
@@ -46,14 +40,23 @@ func _physics_process(delta):
 				velocity.y = -jump_force
 				velocity.x = -500
 		
+	# dash
+	if Input.is_action_just_pressed("dash") and !dashused:
+		dashused = true
+		dash.start_dash(dashlength)
+	var speed = dashspeed if dash.is_dashing() else speed
 	
 	# move left and right
 	if Input.is_action_pressed("move_right"):
-		print(velocity.x)
-		velocity.x = min(velocity.x + acc, speed)
+		if dash.is_dashing():
+			velocity.x = speed
+		else:
+			velocity.x = min(velocity.x + acc, speed)
 	elif Input.is_action_pressed("move_left"):
-		print(velocity.x)
-		velocity.x = max(velocity.x - acc, -speed)
+		if dash.is_dashing():
+			velocity.x = -speed
+		else:
+			velocity.x = max(velocity.x - acc, -speed)
 	else:
 		velocity.x = lerp(velocity.x, 0.0, 0.05)
 		
@@ -77,7 +80,9 @@ func _physics_process(delta):
 		$Sprite2D.position.x = 0
 		$Sprite2D.position.y = -65
 		$Sprite2D.scale.y = 1
-		speed = 300
+		if !dash.is_dashing():
+			speed = 300
 		jump_force = 700
+		
 	
 	move_and_slide()

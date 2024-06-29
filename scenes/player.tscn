@@ -1,29 +1,34 @@
 [gd_scene load_steps=6 format=3 uid="uid://3qv7fr0u6vjy"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_is4sc"]
-[ext_resource type="Texture2D" uid="uid://caiyi3107s70l" path="res://assets/hi.png" id="2_3hwps"]
-[ext_resource type="PackedScene" uid="uid://crxob3h4quq84" path="res://scenes/dash.tscn" id="3_jhpu8"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_lwjmf"]
-size = Vector2(128, 128)
+[ext_resource type="Texture2D" uid="uid://cub5r07jvrusa" path="res://assets/woolbert.png" id="2_ie7kh"]
+[ext_resource type="PackedScene" path="res://scenes/dash.tscn" id="3_jhpu8"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_43l55"]
-size = Vector2(128, 69)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_24yso"]
+radius = 64.0
+height = 146.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2kcti"]
+radius = 38.0
+height = 118.0
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_is4sc")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(1.90735e-06, -65)
-texture = ExtResource("2_3hwps")
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_ie7kh")
 
 [node name="NormalShape" type="CollisionShape2D" parent="."]
-position = Vector2(0, -65)
-shape = SubResource("RectangleShape2D_lwjmf")
+position = Vector2(-13, -59)
+shape = SubResource("CapsuleShape2D_24yso")
 
 [node name="CrouchingShape" type="CollisionShape2D" parent="."]
-position = Vector2(0, -35.5)
-shape = SubResource("RectangleShape2D_43l55")
+position = Vector2(-12, -24)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_2kcti")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, -158)

@@ -11,7 +11,7 @@ size = Vector2(1000, 100)
 [node name="World" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_anfof")]
-position = Vector2(495, 484)
+position = Vector2(485, 514)
 
 [node name="Platform" type="StaticBody2D" parent="."]
 position = Vector2(495, 484)
@@ -25,14 +25,14 @@ mesh = SubResource("QuadMesh_n23f1")
 position = Vector2(19, 83)
 shape = SubResource("RectangleShape2D_i7fhq")
 
-[node name="Platform" type="StaticBody2D" parent="Platform"]
-position = Vector2(1010, -136)
+[node name="Platform2" type="StaticBody2D" parent="."]
+position = Vector2(1495, 383)
 
-[node name="MeshInstance2D" type="MeshInstance2D" parent="Platform/Platform"]
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Platform2"]
 modulate = Color(1, 0.419608, 1, 1)
 position = Vector2(19, 83)
 mesh = SubResource("QuadMesh_n23f1")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Platform"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform2"]
 position = Vector2(19, 83)
 shape = SubResource("RectangleShape2D_i7fhq")

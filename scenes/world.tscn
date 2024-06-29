@@ -36,3 +36,15 @@ mesh = SubResource("QuadMesh_n23f1")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platform2"]
 position = Vector2(19, 83)
 shape = SubResource("RectangleShape2D_i7fhq")
+
+[node name="Platform3" type="StaticBody2D" parent="."]
+rotation = 1.5708
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Platform3"]
+modulate = Color(1, 0.419608, 1, 1)
+position = Vector2(120, 38)
+mesh = SubResource("QuadMesh_n23f1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform3"]
+position = Vector2(120, 38)
+shape = SubResource("RectangleShape2D_i7fhq")

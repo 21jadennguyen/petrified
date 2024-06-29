@@ -1,23 +1,29 @@
-[gd_scene load_steps=5 format=3 uid="uid://3qv7fr0u6vjy"]
+[gd_scene load_steps=6 format=3 uid="uid://3qv7fr0u6vjy"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_is4sc"]
 [ext_resource type="Texture2D" uid="uid://caiyi3107s70l" path="res://assets/hi.png" id="2_3hwps"]
 [ext_resource type="PackedScene" uid="uid://crxob3h4quq84" path="res://scenes/dash.tscn" id="3_jhpu8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lwjmf"]
-size = Vector2(67, 129)
+size = Vector2(128, 128)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_43l55"]
+size = Vector2(128, 69)
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_is4sc")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -68)
-scale = Vector2(0.5, 1)
+position = Vector2(1.90735e-06, -65)
 texture = ExtResource("2_3hwps")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, -68.5)
+[node name="NormalShape" type="CollisionShape2D" parent="."]
+position = Vector2(0, -65)
 shape = SubResource("RectangleShape2D_lwjmf")
+
+[node name="CrouchingShape" type="CollisionShape2D" parent="."]
+position = Vector2(0, -35.5)
+shape = SubResource("RectangleShape2D_43l55")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, -158)

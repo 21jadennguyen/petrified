@@ -67,8 +67,8 @@ func _physics_process(delta):
 		$CrouchingShape.disabled = false
 		$NormalShape.disabled = true
 		$Sprite2D.position.x = 0
-		$Sprite2D.position.y = -35.5
-		$Sprite2D.scale.y = 0.539
+		$Sprite2D.position.y = -25
+		$Sprite2D.scale.y = 0.1
 		speed = 200
 		jump_force = 0
 	else:
@@ -76,7 +76,7 @@ func _physics_process(delta):
 		$NormalShape.disabled = false
 		$Sprite2D.position.x = 0
 		$Sprite2D.position.y = -65
-		$Sprite2D.scale.y = 1
+		$Sprite2D.scale.y = .2
 		speed = 300
 		jump_force = 700
 	

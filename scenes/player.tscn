@@ -1,6 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://3qv7fr0u6vjy"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_is4sc"]
+
 [ext_resource type="Texture2D" uid="uid://caiyi3107s70l" path="res://assets/hi.png" id="2_3hwps"]
 [ext_resource type="PackedScene" uid="uid://crxob3h4quq84" path="res://scenes/dash.tscn" id="3_jhpu8"]
 
@@ -14,6 +15,7 @@ size = Vector2(128, 69)
 script = ExtResource("1_is4sc")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+
 position = Vector2(1.90735e-06, -65)
 texture = ExtResource("2_3hwps")
 

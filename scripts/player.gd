@@ -8,8 +8,8 @@ extends CharacterBody2D
 @export var dashspeed = 1000
 @export var dashlength = .2
 
-@export var wall_slide_speed = 100
-@export var wall_slide_gravity = 100
+@export var wall_slide_speed = 200
+@export var wall_slide_gravity = 30
 
 var dashused : bool = false
 var is_wall_sliding : bool = false
@@ -60,8 +60,8 @@ func _physics_process(delta):
 	else:
 		velocity.x = lerp(velocity.x, 0.0, 0.05)
 		
-	if(is_on_wall() and !is_on_floor()):
-		if Input.is_action_pressed("move_left") or Input.is_action_just_pressed("move_right"):
+	if(is_on_wall()):
+		if Input.is_action_pressed("move_left") or Input.is_action_pressed("move_right"):
 			velocity.y += (wall_slide_gravity * delta)
 			velocity.y = min(velocity.y, wall_slide_speed)
 		

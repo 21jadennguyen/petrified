@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://bvnd22f0j86sh"]
+[gd_scene load_steps=5 format=3 uid="uid://bvnd22f0j86sh"]
 
 [ext_resource type="PackedScene" uid="uid://3qv7fr0u6vjy" path="res://scenes/player.tscn" id="1_anfof"]
+[ext_resource type="Texture2D" uid="uid://0h6t7v6ds5nc" path="res://assets/Background.png" id="2_6v1da"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_n23f1"]
 size = Vector2(1000, 100)
@@ -11,7 +12,7 @@ size = Vector2(1000, 100)
 [node name="World" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_anfof")]
-position = Vector2(485, 514)
+position = Vector2(480, 496)
 
 [node name="Platform" type="StaticBody2D" parent="."]
 position = Vector2(495, 484)
@@ -36,3 +37,10 @@ mesh = SubResource("QuadMesh_n23f1")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platform2"]
 position = Vector2(19, 83)
 shape = SubResource("RectangleShape2D_i7fhq")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="Background" type="Sprite2D" parent="ParallaxBackground"]
+position = Vector2(1048.5, 401)
+scale = Vector2(1.48063, 1)
+texture = ExtResource("2_6v1da")

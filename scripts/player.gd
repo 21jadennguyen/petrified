@@ -79,7 +79,7 @@ func _physics_process(delta):
 		$NormalShape.disabled = false
 		$Sprite2D.position.x = 0
 		$Sprite2D.position.y = -65
-    $Sprite2D.scale.y = .2
+		$Sprite2D.scale.y = .2
 		if !dash.is_dashing():
 			speed = 300
 		jump_force = 700

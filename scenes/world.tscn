@@ -1,15 +1,53 @@
-[gd_scene load_steps=5 format=3 uid="uid://bvnd22f0j86sh"]
+[gd_scene load_steps=6 format=3 uid="uid://bvnd22f0j86sh"]
 
 [ext_resource type="PackedScene" uid="uid://3qv7fr0u6vjy" path="res://scenes/player.tscn" id="1_anfof"]
+[ext_resource type="Texture2D" uid="uid://dta70i37apxna" path="res://assets/tilesetTest.png" id="1_kyx7i"]
 [ext_resource type="Texture2D" uid="uid://cmptp4l1x0fiu" path="res://assets/stick.png" id="2_hhssy"]
 
-[sub_resource type="QuadMesh" id="QuadMesh_n23f1"]
-size = Vector2(1000, 100)
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ylq1u"]
+texture = ExtResource("1_kyx7i")
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0 = 0
+1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:0/0/physics_layer_0/angular_velocity = 0.0
+2:0/0 = 0
+2:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:0/0/physics_layer_0/angular_velocity = 0.0
+0:1/0 = 0
+0:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:1/0/physics_layer_0/angular_velocity = 0.0
+1:1/0 = 0
+1:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:1/0/physics_layer_0/angular_velocity = 0.0
+2:1/0 = 0
+2:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:1/0/physics_layer_0/angular_velocity = 0.0
+0:2/0 = 0
+0:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:2/0/physics_layer_0/angular_velocity = 0.0
+1:2/0 = 0
+1:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:2/0/physics_layer_0/angular_velocity = 0.0
+2:2/0 = 0
+2:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:2/0/physics_layer_0/angular_velocity = 0.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_i7fhq"]
-size = Vector2(1000, 100)
+[sub_resource type="TileSet" id="TileSet_2wgj1"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_ylq1u")
 
 [node name="World" type="Node2D"]
+position = Vector2(98, -14)
+
+[node name="TileMap" type="TileMap" parent="."]
+position = Vector2(-99, 14)
+scale = Vector2(5, 5)
+tile_set = SubResource("TileSet_2wgj1")
+format = 2
+layer_0/tile_data = PackedInt32Array(458752, 0, 0, 458753, 0, 0, 458754, 0, 0, 458755, 0, 0, 458756, 0, 0, 458757, 0, 0, 458758, 0, 0, 458759, 0, 0, 458760, 0, 0, 458761, 0, 0, 458762, 0, 0, 458763, 0, 0, 458764, 0, 0, 458765, 0, 0, 458766, 0, 0, 393216, 0, 0, 327680, 0, 0, 262144, 0, 0, 196608, 0, 0, 131072, 0, 0, 65536, 0, 0, 196612, 0, 0, 131076, 0, 0, 65540, 0, 0, 4, 0, 0, -65532, 0, 0, -131072, 0, 0, -196608, 0, 0, -262144, 0, 0, -327680, 0, 0, -262140, 0, 0, -327676, 0, 0, -393212, 0, 0, -458748, 0, 0)
 
 [node name="Player" parent="." instance=ExtResource("1_anfof")]
 position = Vector2(480, 496)
@@ -19,52 +57,3 @@ position = Vector2(90, -69)
 rotation = 0.837758
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("2_hhssy")
-
-[node name="Platform" type="StaticBody2D" parent="."]
-position = Vector2(495, 484)
-
-[node name="MeshInstance2D" type="MeshInstance2D" parent="Platform"]
-modulate = Color(1, 0.419608, 1, 1)
-position = Vector2(19, 83)
-mesh = SubResource("QuadMesh_n23f1")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform"]
-position = Vector2(19, 83)
-shape = SubResource("RectangleShape2D_i7fhq")
-
-[node name="Platform2" type="StaticBody2D" parent="."]
-position = Vector2(1495, 383)
-
-[node name="MeshInstance2D" type="MeshInstance2D" parent="Platform2"]
-modulate = Color(1, 0.419608, 1, 1)
-position = Vector2(19, 83)
-mesh = SubResource("QuadMesh_n23f1")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform2"]
-position = Vector2(19, 83)
-shape = SubResource("RectangleShape2D_i7fhq")
-
-[node name="Platform3" type="StaticBody2D" parent="."]
-rotation = 1.5708
-
-[node name="MeshInstance2D" type="MeshInstance2D" parent="Platform3"]
-modulate = Color(1, 0.419608, 1, 1)
-position = Vector2(120, 38)
-mesh = SubResource("QuadMesh_n23f1")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform3"]
-position = Vector2(120, 38)
-shape = SubResource("RectangleShape2D_i7fhq")
-
-[node name="Platform4" type="StaticBody2D" parent="."]
-position = Vector2(299, -286)
-rotation = 1.57079
-
-[node name="MeshInstance2D" type="MeshInstance2D" parent="Platform4"]
-modulate = Color(1, 0.419608, 1, 1)
-position = Vector2(120, 38)
-mesh = SubResource("QuadMesh_n23f1")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform4"]
-position = Vector2(120, 38)
-shape = SubResource("RectangleShape2D_i7fhq")

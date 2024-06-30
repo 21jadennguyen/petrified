@@ -43,6 +43,10 @@ crouch={
 ]
 }
 
+[physics]
+
+2d/default_gravity=2000.0
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"

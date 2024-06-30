@@ -1,35 +1,60 @@
-[gd_scene load_steps=6 format=3 uid="uid://3qv7fr0u6vjy"]
+[gd_scene load_steps=10 format=3 uid="uid://3qv7fr0u6vjy"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_is4sc"]
 [ext_resource type="Texture2D" uid="uid://cub5r07jvrusa" path="res://assets/woolbert.png" id="2_ie7kh"]
-[ext_resource type="PackedScene" uid="uid://crxob3h4quq84" path="res://scenes/dash.tscn" id="3_jhpu8"]
+[ext_resource type="Script" path="res://scripts/states/state_machine.gd" id="4_2dd62"]
+[ext_resource type="Script" path="res://scripts/states/idle.gd" id="4_lwy0d"]
+[ext_resource type="Script" path="res://scripts/states/fall.gd" id="5_agoym"]
+[ext_resource type="Script" path="res://scripts/states/move.gd" id="6_ivst5"]
+[ext_resource type="Script" path="res://scripts/states/jump.gd" id="7_hnw68"]
+[ext_resource type="Script" path="res://scripts/states/dash.gd" id="8_1b8fx"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_24yso"]
 radius = 64.0
 height = 146.0
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2kcti"]
-radius = 38.0
-height = 118.0
-
-[node name="Player" type="CharacterBody2D"]
+[node name="player" type="CharacterBody2D"]
 script = ExtResource("1_is4sc")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="sprite" type="Sprite2D" parent="."]
 position = Vector2(1.90735e-06, -65)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("2_ie7kh")
 
-[node name="NormalShape" type="CollisionShape2D" parent="."]
+[node name="collision" type="CollisionShape2D" parent="."]
 position = Vector2(-13, -59)
 shape = SubResource("CapsuleShape2D_24yso")
 
-[node name="CrouchingShape" type="CollisionShape2D" parent="."]
-position = Vector2(-12, -24)
-rotation = 1.5708
-shape = SubResource("CapsuleShape2D_2kcti")
+[node name="state_machine" type="Node" parent="." node_paths=PackedStringArray("starting_state")]
+script = ExtResource("4_2dd62")
+starting_state = NodePath("idle")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(0, -158)
+[node name="idle" type="Node" parent="state_machine" node_paths=PackedStringArray("fall_state", "jump_state", "move_state")]
+script = ExtResource("4_lwy0d")
+fall_state = NodePath("../fall")
+jump_state = NodePath("../jump")
+move_state = NodePath("../move")
 
-[node name="Dash" parent="." instance=ExtResource("3_jhpu8")]
+[node name="fall" type="Node" parent="state_machine" node_paths=PackedStringArray("idle_state", "move_state")]
+script = ExtResource("5_agoym")
+idle_state = NodePath("../idle")
+move_state = NodePath("../move")
+
+[node name="move" type="Node" parent="state_machine" node_paths=PackedStringArray("fall_state", "idle_state", "jump_state")]
+script = ExtResource("6_ivst5")
+fall_state = NodePath("../fall")
+idle_state = NodePath("../idle")
+jump_state = NodePath("../jump")
+
+[node name="jump" type="Node" parent="state_machine" node_paths=PackedStringArray("fall_state", "idle_state", "move_state")]
+script = ExtResource("7_hnw68")
+fall_state = NodePath("../fall")
+idle_state = NodePath("../idle")
+move_state = NodePath("../move")
+
+[node name="dash" type="Node" parent="state_machine" node_paths=PackedStringArray("fall_state", "idle_state", "jump_state", "dash_state")]
+script = ExtResource("8_1b8fx")
+fall_state = NodePath("../fall")
+idle_state = NodePath("../idle")
+jump_state = NodePath("../jump")
+dash_state = NodePath(".")

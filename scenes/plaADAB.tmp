@@ -4,11 +4,11 @@
 [ext_resource type="Texture2D" uid="uid://b81vt2743bslc" path="res://assets/woolbert_sprite_sheet.png" id="2_02tgo"]
 [ext_resource type="Texture2D" uid="uid://cub5r07jvrusa" path="res://assets/woolbert.png" id="2_ie7kh"]
 [ext_resource type="Script" path="res://scripts/states/state_machine.gd" id="4_2dd62"]
-[ext_resource type="Script" path="res://scripts/states/player_states/idle.gd" id="4_lwy0d"]
-[ext_resource type="Script" path="res://scripts/states/player_states/fall.gd" id="5_agoym"]
-[ext_resource type="Script" path="res://scripts/states/player_states/move.gd" id="6_ivst5"]
-[ext_resource type="Script" path="res://scripts/states/player_states/jump.gd" id="7_hnw68"]
-[ext_resource type="Script" path="res://scripts/states/player_states/dash.gd" id="8_1b8fx"]
+[ext_resource type="Script" path="res://scripts/states/idle.gd" id="4_lwy0d"]
+[ext_resource type="Script" path="res://scripts/states/fall.gd" id="5_agoym"]
+[ext_resource type="Script" path="res://scripts/states/move.gd" id="6_ivst5"]
+[ext_resource type="Script" path="res://scripts/states/jump.gd" id="7_hnw68"]
+[ext_resource type="Script" path="res://scripts/states/dash.gd" id="8_1b8fx"]
 [ext_resource type="Script" path="res://scripts/player_move_component.gd" id="10_fy2ft"]
 
 [sub_resource type="Animation" id="Animation_qxt6l"]
@@ -546,7 +546,7 @@ bone_angle = 0.0
 [node name="Foot-Right" type="Bone2D" parent="Skeleton2D/Base"]
 position = Vector2(22.8462, 27.5385)
 rotation = 0.960949
-scale = Vector2(0.999997, 0.999997)
+scale = Vector2(1, 1)
 rest = Transform2D(0.572743, 0.819735, -0.819735, 0.572743, 22.8462, 27.5385)
 auto_calculate_length_and_angle = false
 length = 19.431
@@ -555,6 +555,7 @@ bone_angle = 0.0
 [node name="Arm-Left" type="Bone2D" parent="Skeleton2D/Base"]
 position = Vector2(-38, -12)
 rotation = 2.2796
+scale = Vector2(1, 1)
 rest = Transform2D(-0.650926, 0.759141, -0.759141, -0.650926, -38, -12)
 auto_calculate_length_and_angle = false
 length = 19.0
@@ -613,12 +614,9 @@ script = ExtResource("5_agoym")
 idle_state = NodePath("../idle")
 move_state = NodePath("../move")
 
-[node name="move" type="Node" parent="movement_state_machine" node_paths=PackedStringArray("dash_state", "fall_state", "idle_state", "jump_state")]
+[node name="move" type="Node" parent="movement_state_machine" node_paths=PackedStringArray("idle_state")]
 script = ExtResource("6_ivst5")
-dash_state = NodePath("../dash")
-fall_state = NodePath("../fall")
 idle_state = NodePath("../idle")
-jump_state = NodePath("../jump")
 
 [node name="jump" type="Node" parent="movement_state_machine" node_paths=PackedStringArray("fall_state", "idle_state", "move_state")]
 script = ExtResource("7_hnw68")
@@ -626,9 +624,8 @@ fall_state = NodePath("../fall")
 idle_state = NodePath("../idle")
 move_state = NodePath("../move")
 
-[node name="dash" type="Node" parent="movement_state_machine" node_paths=PackedStringArray("move_state", "dash_state", "fall_state", "idle_state", "jump_state")]
+[node name="dash" type="Node" parent="movement_state_machine" node_paths=PackedStringArray("dash_state", "fall_state", "idle_state", "jump_state")]
 script = ExtResource("8_1b8fx")
-move_state = NodePath("../move")
 dash_state = NodePath(".")
 fall_state = NodePath("../fall")
 idle_state = NodePath("../idle")

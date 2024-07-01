@@ -6,10 +6,11 @@ extends State
 func process_physics(delta: float) -> State:
 	parent.velocity.y += gravity * delta
 
-	var movement = Input.get_axis('move_left', 'move_right') * move_speed
+	var movement = get_movement_input() * move_speed
 	
-	#if movement != 0:
-		#parent.animations.flip_h = movement < 0
+	if movement != 0:
+		#animations.flip_h = movement < 0
+		pass
 	parent.velocity.x = movement
 	parent.move_and_slide()
 	

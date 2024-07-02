@@ -762,8 +762,8 @@ _data = {
 }
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_24yso"]
-radius = 355.0
-height = 790.0
+radius = 358.0
+height = 770.0
 
 [node name="player" type="CharacterBody2D"]
 scale = Vector2(0.2, 0.2)
@@ -834,6 +834,7 @@ rest = Transform2D(1, 0, 0, 1, -52, 167)
 [node name="foot_left" type="Bone2D" parent="skeleton/base"]
 position = Vector2(-101, 106)
 rotation = 2.05901
+scale = Vector2(1, 1)
 rest = Transform2D(-0.469049, 0.883172, -0.883172, -0.469049, -101, 106)
 auto_calculate_length_and_angle = false
 length = 157.027
@@ -851,6 +852,7 @@ bone_angle = 0.0
 [node name="arm_left" type="Bone2D" parent="skeleton/base"]
 position = Vector2(-185, -58)
 rotation = 2.2796
+scale = Vector2(1, 1)
 rest = Transform2D(-0.650926, 0.759141, -0.759141, -0.650926, -185, -58)
 auto_calculate_length_and_angle = false
 length = 111.162
@@ -859,6 +861,7 @@ bone_angle = 0.0
 [node name="arm_right" type="Bone2D" parent="skeleton/base"]
 position = Vector2(205, -86)
 rotation = 0.888878
+scale = Vector2(1, 1)
 rest = Transform2D(0.630284, 0.776365, -0.776365, 0.630284, 205, -86)
 auto_calculate_length_and_angle = false
 length = 109.162
@@ -867,7 +870,7 @@ bone_angle = 0.0
 [node name="head" type="Bone2D" parent="skeleton/base"]
 position = Vector2(-12, -284)
 rotation = 1.37212
-scale = Vector2(0.999998, 0.999998)
+scale = Vector2(0.999999, 0.999999)
 rest = Transform2D(0.197376, 0.980327, -0.980327, 0.197376, -12, -284)
 auto_calculate_length_and_angle = false
 length = 220.0
@@ -896,6 +899,13 @@ texture = ExtResource("2_ie7kh")
 visible = false
 position = Vector2(-68, 40)
 shape = SubResource("CapsuleShape2D_24yso")
+disabled = true
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="."]
+visible = false
+position = Vector2(5, 20)
+scale = Vector2(1, 1)
+polygon = PackedVector2Array(-73, -367.8, -35, -360, -15, -355, 0, -345, 30, -330, 40, -330, 45, -335, 90, -330, 119, -321.7, 119, -320.4, 140, -305, 150, -300, 160, -290, 195, -240, 200, -230, 227.4, -168, 260, -130, 265, -110, 270, -90, 270, -70, 265, -55, 260, -35, 240, -15, 262, -1, 270, 5, 275, 25, 280, 40, 280, 65, 280, 80, 280, 110, 275, 135, 265, 155, 250, 180, 225, 210, 195, 245, 180, 255, 180, 265, 175, 270, 170, 300, 160, 315, 145, 335, 130, 345, 130, 360, 135, 370, 135, 375, 135, 385, 135, 395, 130, 400, 115, 405, 112, 405.5, 90, 405, 75, 400, 65, 395, 55, 395, 30, 380, 15, 380, -15, 375, -35, 370, -50, 365, -65, 360, -75, 370, -95, 375, -115, 380, -135, 380, -150, 380, -170, 380, -180, 390, -195, 395, -200, 400, -210, 405, -225, 405, -235, 405, -240, 400, -245, 395, -250, 390, -255, 370, -250, 345, -263, 322.6, -263, 319.4, -265.7, 305, -266.4, 305, -306, 289.4, -306, 288.1, -321, 278.1, -321, 276.8, -334, 263.8, -334, 261.6, -346, 244.6, -346, 242.5, -358, 218.5, -358, 215.4, -364.7, 181.9, -397, 159, -397, 157.9, -411, 144.9, -411, 142.5, -430, 105.5, -430, 101, -437, 71.2, -437, 46.9, -435.9, 29, -434.7, 29, -426.7, -13, -425.4, -13, -413.4, -48, -412.1, -48, -406, -58.5, -406, -60.9, -409, -62.9, -409, -67.6, -414, -92.8, -414, -104.1, -411.8, -125, -410.5, -125, -405, -175, -385, -205, -375, -220, -350, -245, -315, -270, -265, -285, -250, -310, -235, -320, -215, -335, -205, -345, -180, -355, -155, -360, -125, -370, -115, -370, -102, -370.2)
 
 [node name="movement_state_machine" type="Node" parent="." node_paths=PackedStringArray("starting_state")]
 script = ExtResource("4_2dd62")

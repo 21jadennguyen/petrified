@@ -22,6 +22,20 @@ func process_physics(delta: float) -> State:
 	if movement != 0:
 		#animations.flip_h = movement < 0
 		pass
+	
+	# For flipping sprite while changing directions (bugged)
+	#if movement < 0:
+		#move_component.direction = -1
+		#print(flipped)
+		#if !flipped:
+			#parent.scale.x = -.2
+			#flipped = true
+	#elif movement > 0:
+		#move_component.direction = 1
+		#if flipped:
+			#parent.scale.x = -.2
+			#flipped = false
+	
 	parent.velocity.x = movement
 	parent.move_and_slide()
 	

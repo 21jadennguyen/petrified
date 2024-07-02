@@ -20,11 +20,19 @@ func process_physics(delta: float) -> State:
 	
 	if movement == 0:
 		return idle_state
-		
+	
+	# For flipping sprite while changing directions
 	if movement < 0:
 		move_component.direction = -1
+		print(flipped)
+		if !flipped:
+			parent.scale.x = -.2
+			flipped = true
 	elif movement > 0:
 		move_component.direction = 1
+		if flipped:
+			parent.scale.x = -.2
+			flipped = false
 		
 	print(move_component.direction)
 	

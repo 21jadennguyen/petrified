@@ -5,6 +5,7 @@ extends Node
 @export var move_speed: float = 400
 @export var wall_gravity: float = 100
 @export var dash_speed: float = 2000
+@export var flipped: bool = false
 
 var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
 var animations: AnimationPlayer

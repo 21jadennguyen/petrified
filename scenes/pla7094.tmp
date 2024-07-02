@@ -890,7 +890,6 @@ scale = Vector2(0.2, 0.2)
 texture = ExtResource("2_ie7kh")
 
 [node name="collision" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(-68, 40)
 shape = SubResource("CapsuleShape2D_24yso")
 
@@ -928,10 +927,14 @@ move_state = NodePath("../move")
 [node name="dash" type="Node" parent="movement_state_machine" node_paths=PackedStringArray("move_state", "dash_state", "fall_state", "idle_state", "jump_state")]
 script = ExtResource("8_1b8fx")
 move_state = NodePath("../move")
+time_to_dash = null
 dash_state = NodePath(".")
 fall_state = NodePath("../fall")
 idle_state = NodePath("../idle")
 jump_state = NodePath("../jump")
+animation_name = null
+move_speed = null
+wall_gravity = null
 
 [node name="player_move_component" type="Node" parent="."]
 script = ExtResource("10_fy2ft")

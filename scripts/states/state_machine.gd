@@ -1,17 +1,16 @@
 extends Node
 
-@export
-var starting_state: State
+@export var starting_state: State
 
 var current_state: State
 
 # Initialize the state machine by giving each child state a reference to the
 # parent object it belongs to and enter the default starting_state.
-#func init(parent: CharacterBody2D, animations: AnimatedSprite2D, move_component) -> void:
-func init(parent: CharacterBody2D, move_component) -> void:
+func init(parent: CharacterBody2D, animations: AnimationPlayer, move_component) -> void:
 	for child in get_children():
 		child.parent = parent
 		child.move_component = move_component
+		child.animations = animations
 
 	# Initialize to the default state
 	change_state(starting_state)

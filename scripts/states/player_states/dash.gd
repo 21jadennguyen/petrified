@@ -7,7 +7,6 @@ extends 'res://scripts/states/player_states/move.gd'
 @export var time_to_dash := 0.5
 
 var dash_timer := 0.0
-var direction := 1.0
 
 func enter() -> void:
 	super()
@@ -19,7 +18,9 @@ func enter() -> void:
 	#else:
 		#direction = 1
 		
-	parent.velocity.x = dash_speed * direction
+	print(move_component.direction)
+		
+	parent.velocity.x = dash_speed * move_component.direction
 
 # Just to be safe, disable any other inputs
 func process_input(event: InputEvent) -> State:
@@ -30,7 +31,7 @@ func process_physics(delta: float) -> State:
 	if dash_timer <= 0.0:
 		# Fall back on the default input implementation to
 		# determine where to go next
-		parent.velocity.x = move_speed
+		parent.velocity.x = move_speed * move_component.direction
 		if super.get_movement_input() != 0.0:
 			return move_state
 		return idle_state
@@ -42,7 +43,7 @@ func process_physics(delta: float) -> State:
 
 # Override movement inputs
 func get_movement_input() -> float:
-	return direction
+	return move_component.direction
 
 func get_jump() -> bool:
 	return false 

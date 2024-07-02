@@ -18,6 +18,8 @@ func enter() -> void:
 		#direction = -1
 	#else:
 		#direction = 1
+		
+	parent.velocity.x = dash_speed * direction
 
 # Just to be safe, disable any other inputs
 func process_input(event: InputEvent) -> State:
@@ -28,9 +30,12 @@ func process_physics(delta: float) -> State:
 	if dash_timer <= 0.0:
 		# Fall back on the default input implementation to
 		# determine where to go next
+		parent.velocity.x = move_speed
 		if super.get_movement_input() != 0.0:
 			return move_state
 		return idle_state
+		
+	parent.move_and_slide()
 	
 	# At this point, run 'process_physics' in the move script as written
 	return super(delta)
@@ -40,4 +45,4 @@ func get_movement_input() -> float:
 	return direction
 
 func get_jump() -> bool:
-	return false
+	return false 

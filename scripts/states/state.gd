@@ -4,11 +4,12 @@ extends Node
 @export var animation_name: String
 @export var move_speed: float = 400
 @export var wall_gravity: float = 100
+@export var dash_speed: float = 2000
 
 var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 
-#var animations: AnimatedSprite2D
+var animations: AnimationTree
 var move_component
 var parent: CharacterBody2D
 

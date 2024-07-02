@@ -605,8 +605,7 @@ tracks/11/keys = {
 
 [sub_resource type="Animation" id="Animation_ek44l"]
 resource_name = "move_3"
-length = 0.5
-loop_mode = 2
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -614,10 +613,10 @@ tracks/0/path = NodePath("base/foot_right:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(132, 114), Vector2(122, 113), Vector2(112, 113), Vector2(104.333, 115), Vector2(97, 123), Vector2(92, 128)]
+"values": [Vector2(133, 125), Vector2(89, 126)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -626,10 +625,10 @@ tracks/1/path = NodePath("base/foot_right:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [1.83504, 1.66097, 1.4869, 1.31283, 1.13876, 1.00498]
+"values": [1.83504, 0.96469]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -638,10 +637,10 @@ tracks/2/path = NodePath("base/foot_left:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(-148, 113), Vector2(-138, 103), Vector2(-128, 93), Vector2(-118, 88), Vector2(-108, 89), Vector2(-103, 93)]
+"values": [Vector2(-147, 126), Vector2(-102, 97)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -650,10 +649,10 @@ tracks/3/path = NodePath("base/foot_left:rotation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [0.952267, 1.1342, 1.31614, 1.49808, 1.68001, 1.86195]
+"values": [0.952267, 1.86195]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -768,11 +767,6 @@ height = 790.0
 [node name="player" type="CharacterBody2D"]
 scale = Vector2(0.2, 0.2)
 script = ExtResource("1_is4sc")
-
-[node name="Line2D" type="Line2D" parent="."]
-position = Vector2(0, 25)
-scale = Vector2(5, 5)
-points = PackedVector2Array(-47, 85, 24, 85)
 
 [node name="parts" type="Node2D" parent="."]
 
@@ -896,7 +890,6 @@ scale = Vector2(0.2, 0.2)
 texture = ExtResource("2_ie7kh")
 
 [node name="collision" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(-68, 40)
 shape = SubResource("CapsuleShape2D_24yso")
 
@@ -934,10 +927,14 @@ move_state = NodePath("../move")
 [node name="dash" type="Node" parent="movement_state_machine" node_paths=PackedStringArray("move_state", "dash_state", "fall_state", "idle_state", "jump_state")]
 script = ExtResource("8_1b8fx")
 move_state = NodePath("../move")
+time_to_dash = null
 dash_state = NodePath(".")
 fall_state = NodePath("../fall")
 idle_state = NodePath("../idle")
 jump_state = NodePath("../jump")
+animation_name = null
+move_speed = null
+wall_gravity = null
 
 [node name="player_move_component" type="Node" parent="."]
 script = ExtResource("10_fy2ft")

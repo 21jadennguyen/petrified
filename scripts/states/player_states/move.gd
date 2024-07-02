@@ -20,8 +20,15 @@ func process_physics(delta: float) -> State:
 	
 	if movement == 0:
 		return idle_state
+		
+	if movement < 0:
+		move_component.direction = -1
+	elif movement > 0:
+		move_component.direction = 1
+		
+	print(move_component.direction)
 	
-	#animations.flip_h = movement < 0
+	
 	parent.velocity.x = movement
 	parent.move_and_slide()
 	

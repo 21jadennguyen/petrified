@@ -7,14 +7,12 @@ extends Node
 @export var dash_speed: float = 2000
 
 var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
-
-
-var animations: AnimationTree
+var animations: AnimationPlayer
 var move_component
 var parent: CharacterBody2D
 
 func enter() -> void:
-	#animations.play(animation_name)
+	animations.play(animation_name)
 	pass
 
 func exit() -> void:

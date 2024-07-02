@@ -53,10 +53,9 @@ layer_0/tile_data = PackedInt32Array(458752, 0, 0, 458753, 0, 0, 458754, 0, 0, 4
 position = Vector2(480, 496)
 
 [node name="Stick" type="Sprite2D" parent="Player"]
-position = Vector2(90, -69)
+position = Vector2(495, -35.0001)
 rotation = 0.837758
-scale = Vector2(0.2, 0.2)
 texture = ExtResource("2_hhssy")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(479, 326)
+position = Vector2(475, 532)
